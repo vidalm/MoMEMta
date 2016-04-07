@@ -53,7 +53,7 @@ class BlockB: public Module {
 
 
         
-            invisibles->push_back({xxx}); // Fixme
+            invisibles->push_back({p1}); // Fixme
             jacobians->push_back(computeJacobian(p1, p2));
         
 
@@ -68,8 +68,11 @@ class BlockB: public Module {
 
         double computeJacobian(const LorentzVector& p1, const LorentzVector& p2) {
           
+            const double E1  = p1.E();
+            const double p1z = p1.Pz();
 
-            
+            const double E2  = p2.E();
+            const double p2z = p2.Pz();
             // copied from Source/MadWeight/blocks/class_b.f
             
             
