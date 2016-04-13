@@ -41,7 +41,10 @@ class BlockB: public Module {
             invisibles->clear();
             jacobians->clear();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
             // Equations to solve:
             //(1) (p1 + p2)^2 = s12 = M1^2 + M2^2 + 2E1E2 + 2p1xp2x + 2p1yp2y + p1zp2z  
             //(2)  p1x = - pTx  #Coming from pT neutrino = -pT visible = - (p2 + ISR)
@@ -59,7 +62,11 @@ class BlockB: public Module {
             // From eq.(1) p1z = -B*E1 + A
             // From eq.(4) + eq.(1) (1-B^2)* E1^2 + 2AB* E1 - C = 0    
  
+<<<<<<< HEAD
             const double A = (s12-p22+2*(pT.Px()*p2.Px()+pT.Py()*p2.Py()))/(2*p2.Pz());
+=======
+            const double A = (*s12 - p22 + 2*(pT.Px()*p2.Px() + pT.Py()*p2.Py()))/(2*p2.Pz());
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
             const double B = p2.E()/p2.Pz();
             const double C = SQ(pT.Px()) + SQ(pT.Py());
                  
@@ -82,7 +89,11 @@ class BlockB: public Module {
                 
                 LorentzVector p1(-pT.Px(), -pT.Py(), A - B*e1, e1);
                 
+<<<<<<< HEAD
                 invisibles->push_back(p1);
+=======
+                invisibles->push_back({p1});
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
                 jacobians->push_back(computeJacobian(p1, p2));   
             }
         }
@@ -92,7 +103,10 @@ class BlockB: public Module {
             return 0;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
         double computeJacobian(const LorentzVector& p1, const LorentzVector& p2) {
           
             const double E1  = p1.E();
@@ -102,7 +116,11 @@ class BlockB: public Module {
             const double p2z = p2.Pz();
             // Some extra info in MadWeight Source/MadWeight/blocks/class_b.f Good luck!!
             
+<<<<<<< HEAD
             double inv_jac = 4.*SQ(M_PI*sqrt_s)( p2z*E1 - E2*p1z);
+=======
+            double inv_jac = 4.*SQ(M_PI*sqrt_s)*( p2z*E1 - E2*p1z);
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
             
             return 1. / std::abs(inv_jac);
         }
@@ -116,6 +134,9 @@ class BlockB: public Module {
 
         std::shared_ptr<std::vector<std::vector<LorentzVector>>> invisibles = produce<std::vector<std::vector<ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double>>>>>("invisibles");
         std::shared_ptr<std::vector<double>> jacobians = produce<std::vector<double>>("jacobians");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34ebf58aafb52c05be3ea104b8d5793f34737a58
 };
 REGISTER_MODULE(BlockB);
